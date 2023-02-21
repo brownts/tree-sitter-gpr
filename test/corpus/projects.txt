@@ -1,0 +1,147 @@
+================================================================================
+Simple Project
+================================================================================
+
+abstract project Hello_World is
+end Hello_World;
+
+--------------------------------------------------------------------------------
+
+(project
+  (project_declaration
+    (project_qualifier)
+    (name (identifier))
+    (name (identifier))))
+
+================================================================================
+Nominal Project
+================================================================================
+
+limited with "a.gpr";
+with "b.gpr", "c.gpr";
+
+project Hello_World is
+   type Build_Type is ("Debug", "Release");
+   Build : Build_Type := external("BUILD", "Debug");
+
+   for Main use ("hello_world.adb");
+
+   package Compiler extends A.Compiler is
+      Options := ();
+
+      case Build is
+         when "Debug"   => Options := ("-Og");
+         when "Release" => Options := ("-O2");
+      end case;
+
+      for Default_Switches ("Ada") use Compiler'Default_Switches ("Ada") & Options;
+   end Compiler;
+
+   package Binder is
+      for Switches ("Ada") use ("-E");
+   end Binder;
+
+   package Naming renames A.Naming;
+
+end Hello_World;
+
+--------------------------------------------------------------------------------
+
+(project
+  (with_declaration
+    (string_literal))
+
+  (with_declaration
+    (string_literal)
+    (string_literal))
+
+  (project_declaration
+    name: (name (identifier))
+
+    (typed_string_declaration
+      name: (identifier)
+      (string_literal)
+      (string_literal))
+
+    (variable_declaration
+      name: (identifier)
+      type: (name (identifier))
+      (expression
+        (term
+          (builtin_function_call
+            (expression_list
+              (expression (term (string_literal)))
+              (expression (term (string_literal))))))))
+
+    (attribute_declaration
+        name: (identifier)
+        value: (expression
+                 (term
+                   (expression_list
+                     (expression
+                       (term (string_literal)))))))
+
+    (package_declaration
+      name: (identifier)
+      basename: (name (identifier) (identifier))
+
+      (variable_declaration
+        name: (identifier)
+        (expression (term (expression_list))))
+
+      (case_construction
+        (variable_reference
+          (name
+            (identifier)))
+        (case_item
+          (discrete_choice_list (string_literal))
+          (variable_declaration
+            name: (identifier)
+            (expression
+              (term
+                (expression_list
+                  (expression
+                    (term (string_literal))))))))
+        (case_item
+          (discrete_choice_list (string_literal))
+          (variable_declaration
+            name: (identifier)
+            (expression
+              (term
+                (expression_list
+                  (expression
+                    (term (string_literal)))))))))
+
+        (attribute_declaration
+          name: (identifier)
+          (associative_array_index (string_literal))
+          value: (expression
+                   (term
+                     (variable_reference
+                       (name (identifier))
+                       (attribute_reference
+                         (identifier)
+                         (string_literal))))
+                   (term
+                     (variable_reference
+                       (name (identifier))))))
+     endname: (identifier))
+
+     (package_declaration
+       name: (identifier)
+       (attribute_declaration
+         name: (identifier)
+         (associative_array_index (string_literal))
+         value: (expression
+                  (term
+                    (expression_list
+                      (expression
+                        (term
+                          (string_literal)))))))
+      endname: (identifier))
+
+     (package_declaration
+       name: (identifier)
+       origname: (name (identifier) (identifier)))
+
+   endname: (name (identifier))))
