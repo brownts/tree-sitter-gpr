@@ -68,26 +68,26 @@ npm run test
 
 ## Testing (GPR)
 
-The [GPR project] also contains both examples and a test suite which
-are used to test this parser.  This was helpful originally in
-determining that the production rules in the User Manual were
-insufficient.  However it is also useful in order to test potential
-regressions between the tool and the grammar defined here.
+The [GPR project] also contains many GPR files (e.g., examples, test
+suite, etc.) which are used to test this parser.  This was helpful
+originally in determining that the production rules in the User Manual
+were insufficient.  However it is also useful in order to test
+potential regressions between the tool and the grammar defined here.
 
 In order to perform this testing, there is an assumption that the [GPR
 project] exists adjacent to this project.  As such, a relative path is
 used to search for and run tests on the set of GPR files found there.
 
 The approach taken in this testing, is to use the set of GPR files in
-the examples and test suites directories of that project.  The set of
-files are determined based on a recursive search of the directories.
-However, some of the GPR files used in the test suite are used to
-check for invalid syntax, thus they are not syntactically valid.  In
-order to account for these files, a "skip list" is maintained to omit
-these GPR files from the set that are tested.  This list is manually
-maintained and each file listed there has been inspected to verify
-that they do in fact contain invalid syntax.  This list will need to
-be updated if new GPR files are added which contain invalid syntax.
+the directories of that project.  The set of files are determined
+based on a recursive search of the directories.  However, some of the
+GPR files used in the test suite are used to check for invalid syntax,
+thus they are not syntactically valid.  In order to account for these
+files, a "skip list" is maintained to omit these GPR files from the
+set that are tested.  This list is manually maintained and each file
+listed there has been inspected to verify that they do in fact contain
+invalid syntax.  This list will need to be updated if new GPR files
+are added which contain invalid syntax.
 
 It was considered to be smarter about this testing and to hook into
 the GPR test suite, since those tests know which should fail and which
@@ -98,12 +98,12 @@ that test suite and failures due to parsing, that approach was not
 pursued.
 
 This form of testing does not guarantee that it detects all erroneous
-GPR files, but it does at least make sure that valid GPR files in the
-examples and test suite do not cause parsing errors.  At the heart of
-this testing, the "parse" functionality of the Node tree-sitter
-package is used to run each GPR file through the parser.  Currently
-there are 900+ unique GPR files that are parsed using this method, so
-this provides a high level of confidence.
+GPR files, but it does at least make sure that valid GPR files in that
+project do not cause parsing errors.  At the heart of this testing,
+the "parse" functionality of the Node tree-sitter package is used to
+run each GPR file through the parser.  Currently there are 1000+
+unique GPR files that are parsed using this method, so this provides a
+high level of confidence.
 
 Currently the "test harness" consists of a Makefile and some commands
 known to exist in a Linux environment (i.e., `make`, `sed`, `find`,

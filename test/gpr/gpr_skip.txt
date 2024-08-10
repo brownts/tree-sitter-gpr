@@ -4,7 +4,7 @@ testsuite/tests/file-reader/aggregated.gpr
 testsuite/tests/file-reader/aggregating.gpr
 testsuite/tests/file-reader/extended.gpr
 testsuite/tests/file-reader/withed.gpr
-testsuite/tests/gprname-invalid-gpr-file/prj.gpr
+testsuite/tests/gprinspect-invalid-project/prj1.gpr
 testsuite/tests/invalid-project/p.gpr
 testsuite/tests/options/new-current-directory/default/default.gpr
 testsuite/tests/options/new-current-directory/default/test.gpr

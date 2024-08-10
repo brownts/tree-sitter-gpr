@@ -34,5 +34,10 @@ jobs:
       - name: Test Project (Corpus)
         run: npm run test
 
+      # Initialize tree-sitter config to prevent nuisance message
+      # during tree-sitter parsing, when config doesn't exist.
+      - name: Create Tree-sitter Config
+        run: npx tree-sitter init-config
+
       - name: Test Project (GPR)
         run: npm run gpr-test
