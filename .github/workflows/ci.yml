@@ -13,20 +13,20 @@ jobs:
         working-directory: tree-sitter-gpr
     steps:
       - name: Checkout (tree-sitter-gpr)
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           path: tree-sitter-gpr
 
       - name: Checkout (gpr)
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: adacore/gpr
           path: gpr
 
       - name: Install Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 16.x
+          node-version: 20.x
 
       - name: Install Module Dependencies
         run: npm install
