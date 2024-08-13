@@ -2,23 +2,35 @@
   "name": "gpr",
   "rules": {
     "project": {
-      "type": "SEQ",
+      "type": "CHOICE",
       "members": [
         {
-          "type": "CHOICE",
+          "type": "SEQ",
           "members": [
             {
-              "type": "SYMBOL",
-              "name": "_context_clause"
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_context_clause"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
             },
             {
-              "type": "BLANK"
+              "type": "SYMBOL",
+              "name": "project_declaration"
             }
           ]
         },
         {
-          "type": "SYMBOL",
-          "name": "project_declaration"
+          "type": "REPEAT1",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_declarative_item"
+          }
         }
       ]
     },

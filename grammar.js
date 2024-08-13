@@ -12,9 +12,13 @@ module.exports = grammar({
         // Project Declarations
         //
 
-        project: $ => seq(
-            optional($._context_clause),
-            $.project_declaration),
+        project: $ => choice(
+            seq(optional($._context_clause),
+                $.project_declaration),
+            // Not grammar accurate, but allowing declarative items at
+            // the top-level allows supporting code fragments, such as
+            // those found in an editor's hover information.
+            repeat1($._declarative_item)),
 
         _context_clause: $ => repeat1(
             $.with_declaration),

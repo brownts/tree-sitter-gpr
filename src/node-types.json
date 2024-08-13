@@ -299,7 +299,31 @@
       "required": true,
       "types": [
         {
+          "type": "attribute_declaration",
+          "named": true
+        },
+        {
+          "type": "case_construction",
+          "named": true
+        },
+        {
+          "type": "empty_declaration",
+          "named": true
+        },
+        {
+          "type": "package_declaration",
+          "named": true
+        },
+        {
           "type": "project_declaration",
+          "named": true
+        },
+        {
+          "type": "typed_string_declaration",
+          "named": true
+        },
+        {
+          "type": "variable_declaration",
           "named": true
         },
         {
